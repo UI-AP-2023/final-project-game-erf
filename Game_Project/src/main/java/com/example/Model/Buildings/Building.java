@@ -14,6 +14,8 @@ public abstract class Building {
     private ImageView buildingImage;
     private double xPosition;
     private double yPosition;
+    private boolean destroyed=false;
+    private boolean blank=false;
 
     public Building(BuildingKind buildingKind, double buildingHealth, double attackDamage, double buildingRange, double x, double y , ImageView buildingImage) {
         this.buildingKind = buildingKind;
@@ -55,5 +57,21 @@ public abstract class Building {
 
     public void setBuildingHealth(double buildingHealth) {
         this.buildingHealth = buildingHealth;
+    }
+
+    public boolean isDestroyed() {
+        return destroyed;
+    }
+
+    public void setDestroyed(boolean destroyed) {
+        this.destroyed = destroyed;
+    }
+
+    public boolean isBlank() {
+        return blank;
+    }
+
+    public void setBlank(boolean blank) {
+        this.blank = blank;
     }
 }

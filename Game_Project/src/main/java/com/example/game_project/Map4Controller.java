@@ -2,13 +2,18 @@ package com.example.game_project;
 
 import com.example.Controller.MakeDraggable;
 import com.example.Controller.PlayerController;
-import com.example.Model.Buildings.ArcherTower;
-import com.example.Model.Heroes.Juggernuat;
+import com.example.Model.Buildings.*;
+import com.example.Model.Heroes.*;
 import com.example.Model.Maps.Map;
+import com.example.Model.Maps.Map1;
 import com.example.Model.Maps.Map4;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Map4Controller implements Initializable {
@@ -75,7 +81,19 @@ public class Map4Controller implements Initializable {
 
     private ImageView wolf;
 
+    @FXML
+    private Button btn_back;
+
     private ImageView Raz;
+
+    private ArrayList<Hero> heroes = new ArrayList<Hero>();
+
+    private int TroopsLimit=10;
+
+    private Map map;
+
+    @FXML
+    private AnchorPane anch_map4;
 
 
     @Override
@@ -83,27 +101,98 @@ public class Map4Controller implements Initializable {
 
         hbox_Heroes.setVisible(true);
 
-        ArcherTower archerTower1=new ArcherTower(img_ArcherTower1.getLayoutX(), img_ArcherTower1.getLayoutY());
-        ArcherTower archerTower2=new ArcherTower(img_ArcherTower2.getLayoutX(), img_ArcherTower2.getLayoutY());
-        ArcherTower archerTower3=new ArcherTower(img_ArcherTower3.getLayoutX(), img_ArcherTower3.getLayoutY());
+        ArcherTower archerTower=new ArcherTower(img_Archer1.getLayoutX(),img_Archer1.getLayoutY());
 
-        Map4 map=new Map4();
+        ArcherTower archerTower1=new ArcherTower(img_ArcherTower2.getLayoutX(),img_ArcherTower2.getLayoutY());
+
+        ArcherTower archerTower2=new ArcherTower(img_ArcherTower3.getLayoutX(), img_ArcherTower3.getLayoutY());
+
+        TownHall townHall=new TownHall(img_TownHall.getLayoutX(), img_TownHall.getLayoutY());
+
+
+        map=new Map4();
+
+        map.getBuildings().add(archerTower);
         map.getBuildings().add(archerTower1);
         map.getBuildings().add(archerTower2);
-        map.getBuildings().add(archerTower3);
+        map.getBuildings().add(townHall);
 
         PlayerController.allMaps.add(map);
 
         txt_TroopsLimit.setText("Troops Limit:"+map.getTroopsLimit());
-        txt_UserName.setText("UserName:"+AttackController.enemyName);
+        txt_UserName.setText(AttackController.enemyName);
+
+        System.out.println("archerTower position: "+archerTower.getxPosition()+"   "+archerTower.getyPosition());
+        System.out.println("archerTower1 position: "+archerTower1.getxPosition()+"   "+archerTower1.getyPosition());
+        System.out.println("archerTower2 position: "+archerTower2.getxPosition()+"   "+archerTower2.getyPosition());
+
+
     }
 
     @FXML
-    void start(ActionEvent actionEvent)
-    {
+    void start(ActionEvent event) {
+
+        System.out.println("Starting....");
+
+        Thread threadStart=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (map.getBuildings().size()>0) {
+                    anch_Map4.getChildren().removeAll(img_ArcherTower1,img_ArcherTower2,img_ArcherTower3,img_TownHall);
+
+                    for (Building building : map.getBuildings())
+                    {
+
+                        if (building instanceof ArcherTower)
+                        {
+                            if (building.getxPosition()==img_ArcherTower1.getLayoutX() && building.getyPosition()==img_ArcherTower1.getLayoutY())
+                            {
+                                img_ArcherTower1.setLayoutX(building.getxPosition());
+                                img_ArcherTower1.setLayoutY(building.getyPosition());
+                                anch_Map4.getChildren().add(img_ArcherTower1);
+                            }
+
+                            if (building.getxPosition()==img_ArcherTower2.getLayoutX() && building.getyPosition()==img_ArcherTower2.getLayoutY())
+                            {
+                                img_ArcherTower2.setLayoutX(building.getxPosition());
+                                img_ArcherTower2.setLayoutY(building.getyPosition());
+                                anch_Map4.getChildren().add(img_ArcherTower2);
+                            }
+
+                            if (building.getxPosition()==img_ArcherTower3.getLayoutX() && building.getyPosition()==img_ArcherTower3.getLayoutY())
+                            {
+                                img_ArcherTower3.setLayoutX(building.getxPosition());
+                                img_ArcherTower3.setLayoutY(building.getyPosition());
+                                anch_Map4.getChildren().add(img_ArcherTower3);
+                            }
+
+                        }
+
+                        if (building instanceof TownHall)
+                        {
+                            img_TownHall.setLayoutX(building.getxPosition());
+                            img_TownHall.setLayoutY(building.getyPosition());
+                            anch_Map4.getChildren().add(img_TownHall);
+                        }
+
+                        System.out.println("hanoz edame dare");
+                    }
+
+                    for (Hero hero:heroes) {
+                        if (hero.getHeroHealth() <= 0) {
+                            hero.getImages().get(0).setVisible(false);
+                            //-----------------------------------------remHDel
+                        }
+                    }
+
+                }
+            }
+
+        });
+
+        threadStart.start();
 
     }
-
 
     @FXML
     void spawnJag(MouseEvent event) {
@@ -111,27 +200,42 @@ public class Map4Controller implements Initializable {
         Jug=new ImageView(new Image(Main.class.getResource("Images/jag.png").toString()));
         Jug.setFitHeight(100);
         Jug.setFitWidth(100);
-        anch_Map4.getChildren().add(Jug);
-        MakeDraggable.makeDraggable(Jug);
+        Juggernuat juggernuat1=new Juggernuat();
 
-        Jug.setOnMouseReleased(event1 -> {
-            Map map1=null;
+        if (TroopsLimit>=juggernuat1.getCapacity())
+        {
+            anch_Map4.getChildren().add(Jug);
+            MakeDraggable.makeDraggable(Jug);
 
+            Jug.setOnMouseReleased(event1 -> {
+                Map map1=null;
 
-            for (Map map:PlayerController.allMaps)
-            {
-
-                if (map.getMapImage().getImage().getUrl().equals(img_Map4.getImage().getUrl()))
+                for (Map map:PlayerController.allMaps)
                 {
-                    map1=map;
 
+                    if (map instanceof Map1)
+                    {
+                        map1=map;
+                    }
                 }
-            }
-            Juggernuat juggernuat=new Juggernuat(map1,Jug,anch_Map4);
-            Thread t = new Thread(juggernuat);
-            t.start();
-        });
+                Juggernuat juggernuat=new Juggernuat(map1,Jug);
 
+                juggernuat.getImages().clear();
+                juggernuat.getImages().add(Jug);
+                heroes.add(juggernuat);
+                Thread t = new Thread(juggernuat);
+                t.start();
+                TroopsLimit-=juggernuat.getCapacity();
+
+            });
+        }
+        else
+        {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error while creating hero!!");
+            alert.setContentText("your have created heroes and reach the map troops limit!!");
+            alert.show();
+        }
 
 
     }
@@ -139,32 +243,145 @@ public class Map4Controller implements Initializable {
     @FXML
     void spawnJak(MouseEvent event) {
 
-        Jak=new ImageView(new Image(img_Jak.getImage().getUrl()));
+        Jak=new ImageView(new Image(Main.class.getResource("Images/jakiro.png").toString()));
         Jak.setFitHeight(100);
         Jak.setFitWidth(100);
-        anch_Map4.getChildren().add(Jak);
-        MakeDraggable.makeDraggable(Jak);
+
+        Jakiro jakiro1=new Jakiro();
+
+        if (TroopsLimit>=jakiro1.getCapacity())
+        {
+            anch_Map4.getChildren().add(Jak);
+            MakeDraggable.makeDraggable(Jak);
+
+            Jak.setOnMouseReleased(event1 -> {
+                Map map1=null;
+
+                for (Map map:PlayerController.allMaps)
+                {
+
+                    if (map instanceof Map1)
+                    {
+                        map1=map;
+                    }
+                }
+                Jakiro jakiro=new Jakiro(map1,Jak);
+
+                jakiro.getImages().clear();
+                jakiro.getImages().add(Jak);
+                heroes.add(jakiro);
+                Thread t = new Thread(jakiro);
+                t.start();
+                TroopsLimit-=jakiro.getCapacity();
+
+            });
+        }
+        else
+        {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error while creating hero!!");
+            alert.setContentText("your have created heroes and reach the map troops limit!!");
+            alert.show();
+        }
+
     }
 
     @FXML
     void spawnRaz(MouseEvent event) {
 
-        Raz=new ImageView(new Image(img_Raz.getImage().getUrl()));
+        Raz=new ImageView(new Image(Main.class.getResource("Images/raz.png").toString()));
         Raz.setFitHeight(100);
         Raz.setFitWidth(100);
-        anch_Map4.getChildren().add(Raz);
-        MakeDraggable.makeDraggable(Raz);
+
+        Razor razor1=new Razor();
+
+        if (TroopsLimit>=razor1.getCapacity())
+        {
+            anch_Map4.getChildren().add(Raz);
+            MakeDraggable.makeDraggable(Raz);
+
+            Raz.setOnMouseReleased(event1 -> {
+                Map map1=null;
+
+                for (Map map:PlayerController.allMaps)
+                {
+
+                    if (map instanceof Map1)
+                    {
+                        map1=map;
+                    }
+                }
+                Razor razor=new Razor(map1,Raz);
+
+                razor.getImages().clear();
+                razor.getImages().add(Raz);
+                heroes.add(razor);
+                Thread t = new Thread(razor);
+                t.start();
+                TroopsLimit-=razor.getCapacity();
+
+            });
+        }
+        else
+        {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error while creating hero!!");
+            alert.setContentText("your have created heroes and reach the map troops limit!!");
+            alert.show();
+        }
+
 
     }
 
     @FXML
     void spawnWolf(MouseEvent event) {
 
-        wolf=new ImageView(new Image(img_Wolf.getImage().getUrl()));
+        wolf=new ImageView(new Image(Main.class.getResource("Images/wolf.png").toString()));
         wolf.setFitHeight(100);
         wolf.setFitWidth(100);
-        anch_Map4.getChildren().add(wolf);
-        MakeDraggable.makeDraggable(wolf);
+
+        WereWolf wereWolf1=new WereWolf();
+
+        if (TroopsLimit>=wereWolf1.getCapacity())
+        {
+            anch_Map4.getChildren().add(wolf);
+            MakeDraggable.makeDraggable(wolf);
+
+            wolf.setOnMouseReleased(event1 -> {
+                Map map1=null;
+
+                for (Map map:PlayerController.allMaps)
+                {
+
+                    if (map instanceof Map1)
+                    {
+                        map1=map;
+                    }
+                }
+                WereWolf wereWolf=new WereWolf(map1,wolf);
+
+                wereWolf.getImages().clear();
+                wereWolf.getImages().add(wolf);
+                heroes.add(wereWolf);
+                Thread t = new Thread(wereWolf);
+                t.start();
+                TroopsLimit-=wereWolf.getCapacity();
+
+            });
+        }
+        else
+        {
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error while creating hero!!");
+            alert.setContentText("your have created heroes and reach the map troops limit!!");
+            alert.show();
+        }
+
+
+    }
+
+    @FXML
+    void back(ActionEvent event) {
 
     }
 }

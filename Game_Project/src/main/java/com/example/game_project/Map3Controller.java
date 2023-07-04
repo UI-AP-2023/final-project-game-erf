@@ -72,6 +72,9 @@ public class Map3Controller implements Initializable {
     private ImageView img_WizardTower5;
 
     @FXML
+    private Button btn_back;
+
+    @FXML
     private ImageView img_WizardTower6;
 
     private ImageView Jug;
@@ -154,7 +157,7 @@ public class Map3Controller implements Initializable {
 
                 }
             }
-            Juggernuat juggernuat=new Juggernuat(map1,Jug,anch_Map3);
+            Juggernuat juggernuat=new Juggernuat(map1,Jug);
             Thread t = new Thread(juggernuat);
             t.start();
         });
@@ -192,6 +195,11 @@ public class Map3Controller implements Initializable {
         wolf.setFitWidth(100);
         anch_Map3.getChildren().add(wolf);
         MakeDraggable.makeDraggable(wolf);
+
+    }
+
+    @FXML
+    void back(ActionEvent event) {
 
     }
 }

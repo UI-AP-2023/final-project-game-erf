@@ -14,6 +14,15 @@ public abstract class Hero {
     private double movementSpeed;
     private int capacity;
     public static ArrayList<ImageView> images=new ArrayList<>();
+    public boolean Dead=false;
+
+    public boolean blank=false;
+
+    private ImageView heroImage;
+
+    private double Herox;
+    private double Heroy;
+
 
 
     public Hero(double heroHealth, double heroAttackDamage, boolean isRangeAttack, double range, long attackSpeed, double movementSpeed, int capacity) {
@@ -73,4 +82,49 @@ public abstract class Hero {
                 ;
     }
 
+    public boolean isDead() {
+        return Dead;
+    }
+
+    public void setDead(boolean dead) {
+        Dead = dead;
+    }
+
+    public ImageView getHeroImage() {
+        return heroImage;
+    }
+
+    public boolean isBlank() {
+        return blank;
+    }
+
+    public void setBlank(boolean blank) {
+        this.blank = blank;
+    }
+
+    public void setHeroImage(ImageView heroImage) {
+        this.heroImage = heroImage;
+    }
+
+    public double getHerox() {
+        return Herox;
+    }
+
+    public void setHerox(double herox) {
+        Herox = herox;
+    }
+
+    public double getHeroy() {
+        return Heroy;
+    }
+
+    public void setHeroy(double heroy) {
+        Heroy = heroy;
+    }
+
+    public void setHeroHealth(double heroHealth) {
+        this.heroHealth = heroHealth;
+
+
+    }
 }

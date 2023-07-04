@@ -397,6 +397,27 @@ public class PlayerController {
             }
         }
     }
+    //===========================================================================
+    public static void saveWinToDatabase(Player winner, Player loser) throws SQLException, ClassNotFoundException {
+
+        winner.setPlayerWins(winner.getPlayerWins() + 1);
+        loser.setPlayerLoses(loser.getPlayerLosses() + 1);
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/clashofclans", "erf", "4013613056");
+
+        String sql = "UPDATE players SET Wins='" + winner.getPlayerWins() + "' WHERE UserName='" + winner.getUserName() + "';";
+        Statement s = connection.prepareStatement(sql);
+        s.execute(sql);
+
+        String sql2 = "UPDATE players SET Losses='" + loser.getPlayerLosses() + "' WHERE UserName='" + loser.getPlayerLosses() + "';";
+        Statement s2 = connection.prepareStatement(sql2);
+        s2.execute(sql2);
+        connection.close();
+
+    }
+
+    //============================================================
 
 
 

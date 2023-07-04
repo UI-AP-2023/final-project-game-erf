@@ -80,7 +80,6 @@ public class AttackController implements Initializable {
         if (this.img_Map.getImage().getUrl().contains("Map21.png"))
         {
 
-            enemyName=txt_UserName.getText();
 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Map2.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),1366 , 763);
@@ -93,7 +92,7 @@ public class AttackController implements Initializable {
         }
         if (this.img_Map.getImage().getUrl().contains("Map11.png"))
         {
-            enemyName=txt_UserName.getText();
+
 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Map1.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),1366 , 763);
@@ -107,7 +106,7 @@ public class AttackController implements Initializable {
 
         if (this.img_Map.getImage().getUrl().contains("Map31.png"))
         {
-            enemyName=txt_UserName.getText();
+
 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Map3.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),1366 , 763);
@@ -122,7 +121,7 @@ public class AttackController implements Initializable {
         if (this.img_Map.getImage().getUrl().contains("Map41.png"))
         {
 
-            enemyName=txt_UserName.getText();
+
 
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Map4.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),1366 , 763);
@@ -180,6 +179,7 @@ public class AttackController implements Initializable {
                 }
 
                 Player enemy=PlayerController.players.get(index);
+                enemyName=enemy.getUserName();
 
                 txt_UserName.setText("UserName: " + enemy.getUserName());
                 txt_TroopsLimit.setText("Troops Limit: " + enemy.getMap().getTroopsLimit());

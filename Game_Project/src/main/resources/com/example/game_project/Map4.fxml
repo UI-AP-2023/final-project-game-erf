@@ -113,5 +113,10 @@
             <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
          </font>
       </Text>
+      <Button fx:id="btn_back" disable="true" layoutX="24.0" layoutY="676.0" mnemonicParsing="false" onAction="#back" prefHeight="56.0" prefWidth="118.0" style="-fx-background-color: #D44024;" text="Back" textFill="#fff983">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

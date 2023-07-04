@@ -7,6 +7,6 @@ import javafx.scene.image.ImageView;
 
 public class Tesla extends Building{
     public Tesla( double x, double y) {
-        super(BuildingKind.Defensive, 1350, 150, 6, x, y, new ImageView(new Image(Main.class.getResource("Images/hidden_tesla_13.png").toString())));
+        super(BuildingKind.Defensive, 1350, 150, 30, x, y, new ImageView(new Image(Main.class.getResource("Images/hidden_tesla_13.png").toString())));
     }
 }

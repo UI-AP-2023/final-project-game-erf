@@ -7,6 +7,6 @@ import javafx.scene.image.ImageView;
 public class Map3 extends Map{
     public Map3() {
 
-        super(new ImageView(new Image(Main.class.getResource("Images/Map31.png").toString())),16);
+        super(new ImageView(new Image(Main.class.getResource("Images/Map31.png").toString())),24);
     }
 }

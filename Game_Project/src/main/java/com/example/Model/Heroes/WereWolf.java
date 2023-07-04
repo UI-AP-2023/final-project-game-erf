@@ -1,10 +1,12 @@
 package com.example.Model.Heroes;
 
+import com.example.Model.BuildingKind;
 import com.example.Model.Buildings.Building;
 import com.example.Model.ClosestBuilding;
 import com.example.Model.Maps.Map;
 import com.example.game_project.Main;
 import javafx.animation.TranslateTransition;
+import javafx.geometry.Bounds;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,34 +22,34 @@ public class WereWolf extends Hero implements Runnable{
 
 
     public WereWolf() {
-        super(500, 340, false, 0, 500,30 , 3);
+        super(500, 200, false, 0, 500,30 , 3);
         getImages().add(new ImageView(new Image(Main.class.getResource("Images/werewolf.png").toString())));
     }
 
     public WereWolf(Map map1, ImageView hero) {
-        super(500, 340, false, 0, 500,30 , 3);
+        super(500, 200, false, 0, 500,30 , 3);
         getImages().add(new ImageView(new Image(Main.class.getResource("Images/werewolf.png").toString())));
+        this.setHeroImage(hero);
         this.map=map1;
-        this.heroInBattleField=hero;
+        this.setHerox(hero.getLayoutX());
+        this.setHeroy(hero.getLayoutY());
     }
+
+
 
     @Override
     public void run() {
 
-        while(map.getBuildings().size() > 0 && this.getHeroHealth()>0) {
+        while(checkAnyBuildingRemain() && this.getHeroHealth()>0) {
 
-            System.out.println("the image view Before movement position(X): "+this.heroInBattleField.getLayoutX()+"  (Y):"+this.heroInBattleField.getLayoutY());
-            Building building=findTheClosestBuilding(this.map,this.heroInBattleField);
-            heroMovement(building,this.heroInBattleField);
-            System.out.println("the image view After movement position(X): "+this.heroInBattleField.getTranslateX()+"  (Y):"+this.heroInBattleField.getTranslateY());
+            System.out.println("the image view Before movement position(X): "+this.getHeroImage().getLayoutX()+"  (Y):"+this.getHeroImage().getLayoutY());
+            Building building=findTheClosestBuilding(this.map,this.getHeroImage());
+            heroMovement(building,this.getHeroImage());
+            System.out.println("the image view After movement position(X): "+this.getHeroImage().getTranslateX()+"  (Y):"+this.getHeroImage().getTranslateY());
 
             try {
                 boolean attackResult=attackOnBuilding(building);
-                if (attackResult)
-                {
-                    this.map.getBuildings().remove(building);
 
-                }
             } catch (InterruptedException e) {
 
                 Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -60,25 +62,34 @@ public class WereWolf extends Hero implements Runnable{
 
     }
 
-    public Building findTheClosestBuilding(Map map, ImageView heroImageView)
+    public  Building findTheClosestBuilding(Map map,ImageView heroImageView)
     {
         double distance=0;
         double xDifference=0;
         double yDifference=0;
 
 
-        ArrayList<ClosestBuilding> distances=new ArrayList<ClosestBuilding>();
+        ArrayList<ClosestBuilding>distances=new ArrayList<ClosestBuilding>();
+
+        Bounds localBounds=heroImageView.localToParent(heroImageView.getBoundsInLocal());
+        double x=localBounds.getCenterX();
+        double y=localBounds.getCenterY();
 
 
         for (Building building:map.getBuildings())
         {
-            xDifference=Math.abs(building.getxPosition()- heroImageView.getLayoutX());
-            yDifference=Math.abs(building.getyPosition()- heroImageView.getLayoutY());
-            xDifference=Math.pow(xDifference,2);
-            yDifference=Math.pow(yDifference,2);
+            if (!building.isDestroyed() && building.getBuildingKind()== BuildingKind.Defensive)
+            {
 
-            distance=Math.sqrt(xDifference+yDifference);
-            distances.add(new ClosestBuilding(building, distance));
+                xDifference=building.getxPosition()- heroImageView.getLayoutX();
+                yDifference=building.getyPosition()- heroImageView.getLayoutY();
+                xDifference=Math.pow(xDifference,2);
+                yDifference=Math.pow(yDifference,2);
+
+                distance=Math.sqrt(xDifference+yDifference);
+                distances.add(new ClosestBuilding(building, distance));
+            }
+
         }
 
         distance=0;
@@ -95,7 +106,6 @@ public class WereWolf extends Hero implements Runnable{
             }
         }
 
-        System.out.println("building name: "+building.getClass().getSimpleName()+" distance: "+distance);
 
         return building;
     }
@@ -103,18 +113,22 @@ public class WereWolf extends Hero implements Runnable{
     //=======================Hero moves=================================================================================
     public  void heroMovement(Building building,ImageView HeroImageView)
     {
+        Bounds localBounds=HeroImageView.localToParent(HeroImageView.getBoundsInLocal());
         TranslateTransition t1=new TranslateTransition();
-        t1.setByX(building.getxPosition()-HeroImageView.getLayoutX());
-        t1.setByY(building.getyPosition()-HeroImageView.getLayoutY());
+
+        t1.setByX(building.getxPosition()-localBounds.getCenterX());
+        t1.setByY(building.getyPosition()-localBounds.getCenterY());
 
 
         //edit the movementSpeed------------------------------------------------------------kqekcmecemc
         t1.setNode(HeroImageView);
         WereWolf wolf=new WereWolf();
-        t1.setDuration(Duration.millis(7000/wolf.getMovementSpeed()));
+        t1.setDuration(Duration.millis(70000/wolf.getMovementSpeed()));
 
         t1.setCycleCount(1);
         t1.play();
+        this.setHerox(HeroImageView.getLayoutX());
+        this.setHeroy(HeroImageView.getLayoutY());
     }
 
     //=======================Hero Attack ===============================================================================
@@ -128,6 +142,7 @@ public class WereWolf extends Hero implements Runnable{
         }
         if (building.getBuildingHealth()<=0)
         {
+            building.setDestroyed(true);
             return true;
         }
         else
@@ -139,6 +154,28 @@ public class WereWolf extends Hero implements Runnable{
     public void deleteBuilding(AnchorPane anchorPane, ImageView building)
     {
         anchorPane.getChildren().remove(building);
+    }
+
+    //======================check if any building is remain=============================================================
+
+    public  boolean checkAnyBuildingRemain()
+    {
+        int remainingNumbers=0;
+
+        for (Building building: map.getBuildings())
+        {
+            if (!building.isDestroyed())
+            {
+                remainingNumbers++;
+            }
+        }
+
+        if (remainingNumbers==0)
+        {
+            return false;
+        }
+        else
+            return true;
     }
 
 }
