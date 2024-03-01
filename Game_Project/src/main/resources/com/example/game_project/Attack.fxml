@@ -31,34 +31,34 @@
             <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
          </font>
       </Button>
-      <HBox fx:id="hbox_Heroes" layoutX="914.0" layoutY="11.0" prefHeight="120.0" prefWidth="520.0">
+      <Text fx:id="txt_UserName" fill="#b41b37" fontSmoothingType="LCD" layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName:" wrappingWidth="321.33666229248047">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
+         </font>
+      </Text>
+      <HBox fx:id="hbox_Heroes" layoutX="939.0" layoutY="5.0" prefHeight="120.0" prefWidth="473.0">
          <children>
             <ImageView fx:id="img_Wolf" fitHeight="120.0" fitWidth="130.0">
                <image>
                   <Image url="@Images/wolf.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="img_Orc" fitHeight="120.0" fitWidth="130.0">
+               <image>
+                  <Image url="@Images/Orc.png" />
+               </image>
+            </ImageView>
             <ImageView fx:id="img_jag" fitHeight="120.0" fitWidth="130.0">
                <image>
-                  <Image url="@Images/3394727.jpg" />
+                  <Image url="@Images/jag2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="img_Raz" fitHeight="120.0" fitWidth="104.0">
+            <ImageView fx:id="img_Gol" fitHeight="130.0" fitWidth="120.0">
                <image>
-                  <Image url="@Images/desktop-wallpaper-dota2-razor-dota-2-android.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="img_Jak" fitHeight="120.0" fitWidth="160.0">
-               <image>
-                  <Image url="@Images/desktop-wallpaper-jakiro.jpg" />
+                  <Image url="@Images/Golem.png" />
                </image>
             </ImageView>
          </children>
       </HBox>
-      <Text fx:id="txt_UserName" fill="#b41b37" fontSmoothingType="LCD" layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName:" wrappingWidth="321.33666229248047">
-         <font>
-            <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

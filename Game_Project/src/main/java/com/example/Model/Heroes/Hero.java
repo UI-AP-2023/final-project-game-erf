@@ -15,13 +15,14 @@ public abstract class Hero {
     private int capacity;
     public static ArrayList<ImageView> images=new ArrayList<>();
     public boolean Dead=false;
-
     public boolean blank=false;
-
-    private ImageView heroImage;
-
+    private ImageView currentImage;
     private double Herox;
     private double Heroy;
+    private ArrayList<ImageView>heroMoves=new ArrayList<>();
+    private ArrayList<ImageView>heroAtt=new ArrayList<>();
+    private double initialHealth;
+
 
 
 
@@ -33,6 +34,7 @@ public abstract class Hero {
         this.attackSpeed = attackSpeed;
         this.movementSpeed = movementSpeed;
         this.capacity = capacity;
+        this.initialHealth=heroHealth;
     }
     //------------------------------------------------------------
 
@@ -91,7 +93,7 @@ public abstract class Hero {
     }
 
     public ImageView getHeroImage() {
-        return heroImage;
+        return currentImage;
     }
 
     public boolean isBlank() {
@@ -103,7 +105,7 @@ public abstract class Hero {
     }
 
     public void setHeroImage(ImageView heroImage) {
-        this.heroImage = heroImage;
+        this.currentImage = heroImage;
     }
 
     public double getHerox() {
@@ -126,5 +128,25 @@ public abstract class Hero {
         this.heroHealth = heroHealth;
 
 
+    }
+
+    public ArrayList<ImageView> getHeroMoves() {
+        return heroMoves;
+    }
+
+    public ArrayList<ImageView> getHeroAtt() {
+        return heroAtt;
+    }
+
+    public ImageView getCurrentImage() {
+        return currentImage;
+    }
+
+    public double getInitialHealth() {
+        return initialHealth;
+    }
+
+    public void setInitialHealth(double initialHealth) {
+        this.initialHealth = initialHealth;
     }
 }

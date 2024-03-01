@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="anch_Map" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="763.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game_project.Map1Controller">
    <children>
-      <ImageView fx:id="img_Map" fitHeight="768.0" fitWidth="1368.0">
+      <ImageView fx:id="img_Map" fitHeight="768.0" fitWidth="1368.0" layoutX="-1.0" layoutY="-3.0">
          <image>
             <Image url="@Images/d4eyu0z3tlc61.png" />
          </image>
@@ -49,26 +49,26 @@
             <Image url="@Images/archer_11.png" />
          </image>
       </ImageView>
-      <HBox fx:id="hbox_Heroes" layoutX="842.0" layoutY="7.0" prefHeight="120.0" prefWidth="520.0">
+      <HBox fx:id="hbox_Heroes" layoutX="842.0" layoutY="7.0" prefHeight="120.0" prefWidth="473.0">
          <children>
             <ImageView fx:id="img_Wolf" fitHeight="120.0" fitWidth="130.0" onMouseClicked="#spawnWolf">
                <image>
                   <Image url="@Images/wolf.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="img_Orc" fitHeight="120.0" fitWidth="130.0" onMouseClicked="#spawnOrc">
+               <image>
+                  <Image url="@Images/Orc.png" />
+               </image>
+            </ImageView>
             <ImageView fx:id="img_jag" fitHeight="120.0" fitWidth="130.0" onMouseClicked="#spawnJag">
                <image>
-                  <Image url="@Images/3394727.jpg" />
+                  <Image url="@Images/jag2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="img_Raz" fitHeight="120.0" fitWidth="104.0" onMouseClicked="#spawnRaz">
+            <ImageView fx:id="img_Gol" fitHeight="130.0" fitWidth="120.0" onMouseClicked="#spawnGol">
                <image>
-                  <Image url="@Images/desktop-wallpaper-dota2-razor-dota-2-android.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="img_Jak" fitHeight="120.0" fitWidth="160.0" onMouseClicked="#spawnJak">
-               <image>
-                  <Image url="@Images/desktop-wallpaper-jakiro.jpg" />
+                  <Image url="@Images/Golem.png" />
                </image>
             </ImageView>
          </children>

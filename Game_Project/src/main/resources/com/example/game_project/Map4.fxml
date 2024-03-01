@@ -64,12 +64,12 @@
             </ImageView>
             <ImageView fx:id="img_Raz" fitHeight="120.0" fitWidth="104.0" onMouseClicked="#spawnRaz">
                <image>
-                  <Image url="@Images/desktop-wallpaper-dota2-razor-dota-2-android.jpg" />
+                  <Image url="@Images/desktop-wallpaper-dota2-orc-dota-2-android.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="img_Jak" fitHeight="120.0" fitWidth="160.0" onMouseClicked="#spawnJak">
                <image>
-                  <Image url="@Images/desktop-wallpaper-jakiro.jpg" />
+                  <Image url="@Images/desktop-wallpaper-golem.jpg" />
                </image>
             </ImageView>
          </children>
@@ -88,12 +88,12 @@
             </ImageView>
             <ImageView fx:id="img_Raz1" fitHeight="120.0" fitWidth="104.0" onMouseClicked="#spawnRaz">
                <image>
-                  <Image url="@Images/desktop-wallpaper-dota2-razor-dota-2-android.jpg" />
+                  <Image url="@Images/desktop-wallpaper-dota2-orc-dota-2-android.jpg" />
                </image>
             </ImageView>
             <ImageView fx:id="img_Jak1" fitHeight="120.0" fitWidth="160.0" onMouseClicked="#spawnJak">
                <image>
-                  <Image url="@Images/desktop-wallpaper-jakiro.jpg" />
+                  <Image url="@Images/desktop-wallpaper-golem.jpg" />
                </image>
             </ImageView>
          </children>

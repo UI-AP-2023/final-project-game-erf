@@ -5,8 +5,10 @@ import com.example.Model.Buildings.Building;
 import com.example.Model.ClosestBuilding;
 import com.example.Model.Maps.Map;
 import com.example.game_project.Main;
+import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Bounds;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,17 +26,19 @@ public class Juggernuat extends Hero implements Runnable{
 
     public Juggernuat() {
 
-        super(6700, 400, false, 0, 2000, 16, 6);
+        super(6700, 50, false, 0, 2000, 16, 3);
         getImages().add(new ImageView(new Image(Main.class.getResource("Images/jag.png").toString())));
 
     }
 
     public Juggernuat(Map map1,ImageView hero) {
 
-        super(6700, 400, false, 0, 2000, 16, 6);
+        super(6700, 50, false, 0, 2000, 16, 3);
         getImages().add(new ImageView(new Image(Main.class.getResource("Images/jag.png").toString())));
         this.setHeroImage(hero);
         this.map=map1;
+        initHeroAttack();
+        initHeroMoves();
         this.setHerox(hero.getLayoutX());
         this.setHeroy(hero.getLayoutY());
     }
@@ -81,7 +85,7 @@ public class Juggernuat extends Hero implements Runnable{
 
         for (Building building:map.getBuildings())
         {
-            if (!building.isDestroyed() && building.getBuildingKind()== BuildingKind.Normal)
+            if (!building.isDestroyed() )
             {
 
                 xDifference=building.getxPosition()- heroImageView.getLayoutX();
@@ -114,13 +118,23 @@ public class Juggernuat extends Hero implements Runnable{
     }
 
     //=======================Hero moves=================================================================================
-    public  void heroMovement(Building building,ImageView HeroImageView)
-    {
+    public  void heroMovement(Building building,ImageView HeroImageView)  {
         Bounds localBounds=HeroImageView.localToParent(HeroImageView.getBoundsInLocal());
         TranslateTransition t1=new TranslateTransition();
 
         t1.setByX(building.getxPosition()-localBounds.getCenterX());
         t1.setByY(building.getyPosition()-localBounds.getCenterY());
+
+        if (building.getxPosition()-localBounds.getCenterX()<0)
+        {
+            HeroImageView.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+        }
+
+
+        if (building.getxPosition()-localBounds.getCenterX()>0)
+        {
+            HeroImageView.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        }
 
 
         //edit the movementSpeed------------------------------------------------------------kqekcmecemc
@@ -131,6 +145,31 @@ public class Juggernuat extends Hero implements Runnable{
         t1.setCycleCount(1);
         t1.play();
 
+        while (!(t1.getStatus()== Animation.Status.STOPPED))
+        {
+            for (int i=0 ; i<getHeroMoves().size() ; i++)
+            {
+                this.getCurrentImage().setImage(getHeroMoves().get(i).getImage());
+                this.setHerox(getCurrentImage().getLayoutX());
+                this.setHeroy(getCurrentImage().getLayoutY());
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    Alert alert=new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Error while waiting for hero movement!!");
+                    alert.show();
+                }
+            }
+        }
+
+        t1.setOnFinished(event -> {
+
+            this.getCurrentImage().setImage(new Image(Main.class.getResource("Images/jagAtt/1.png").toString()));
+            this.setHerox(getCurrentImage().getLayoutX());
+            this.setHeroy(getCurrentImage().getLayoutY());
+
+        });
+
         this.setHerox(HeroImageView.getLayoutX());
         this.setHeroy(HeroImageView.getLayoutY());
     }
@@ -140,6 +179,11 @@ public class Juggernuat extends Hero implements Runnable{
     public boolean attackOnBuilding(Building building) throws InterruptedException {
         while (building.getBuildingHealth()>0 && this.getHeroHealth()>0)
         {
+            for (int i=0 ; i<getHeroAtt().size() ;i++)
+            {
+                this.getCurrentImage().setImage(getHeroAtt().get(i).getImage());
+                Thread.sleep(100);
+            }
             building.setBuildingHealth(building.getBuildingHealth()-this.getHeroAttackDamage());
             Thread.sleep(java.time.Duration.ofMillis(this.getAttackSpeed()));
             System.out.println("building health: "+building.getBuildingHealth());
@@ -180,6 +224,29 @@ public class Juggernuat extends Hero implements Runnable{
         }
         else
             return true;
+    }
+    //========================================================================
+    public void initHeroMoves()
+    {
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/1.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/2.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/3.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/4.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/5.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/6.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/7.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/8.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/9.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/10.png").toString())));
+        getHeroMoves().add(new ImageView(new Image(Main.class.getResource("Images/jagMov/11.png").toString())));
+    }
+
+    public void initHeroAttack()
+    {
+        getHeroAtt().add(new ImageView(new Image(Main.class.getResource("Images/jagAtt/1.png").toString())));
+        getHeroAtt().add(new ImageView(new Image(Main.class.getResource("Images/jagAtt/2.png").toString())));
+        getHeroAtt().add(new ImageView(new Image(Main.class.getResource("Images/jagAtt/3.png").toString())));
+        getHeroAtt().add(new ImageView(new Image(Main.class.getResource("Images/jagAtt/4.png").toString())));
     }
 
 }

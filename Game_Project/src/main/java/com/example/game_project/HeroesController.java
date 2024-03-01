@@ -1,8 +1,8 @@
 package com.example.game_project;
 
-import com.example.Model.Heroes.Jakiro;
+import com.example.Model.Heroes.Golem;
 import com.example.Model.Heroes.Juggernuat;
-import com.example.Model.Heroes.Razor;
+import com.example.Model.Heroes.Orc;
 import com.example.Model.Heroes.WereWolf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -152,8 +152,8 @@ public class HeroesController implements Initializable {
 
         Juggernuat juggernuat=new Juggernuat();
         WereWolf wereWolf=new WereWolf();
-        Razor razor=new Razor();
-        Jakiro jakiro=new Jakiro();
+        Orc orc =new Orc();
+        Golem golem =new Golem();
 
         txt_DamageJag.setText(txt_DamageJag.getText()+juggernuat.getHeroAttackDamage());
         txt_HealthJag.setText(txt_HealthJag.getText()+juggernuat.getHeroHealth());
@@ -163,21 +163,21 @@ public class HeroesController implements Initializable {
         txt_boolJag.setText(txt_boolJag.getText()+juggernuat.isRangeAttack());
         txt_CapJag.setText(txt_CapJag.getText()+juggernuat.getCapacity());
 
-        txt_DamageJak.setText(txt_DamageJak.getText()+jakiro.getHeroAttackDamage());
-        txt_HealthJak.setText(txt_HealthJak.getText()+jakiro.getHeroHealth());
-        txt_RangeJak.setText(txt_RangeJak.getText()+jakiro.getRange());
-        txt_AtJak.setText(txt_AtJak.getText()+jakiro.getAttackSpeed());
-        txt_MsJak.setText(txt_MsJak.getText()+jakiro.getMovementSpeed());
-        txt_boolJak.setText(txt_boolJak.getText()+jakiro.isRangeAttack());
-        txt_CapJak.setText(txt_CapJak.getText()+jakiro.getCapacity());
+        txt_DamageJak.setText(txt_DamageJak.getText()+ golem.getHeroAttackDamage());
+        txt_HealthJak.setText(txt_HealthJak.getText()+ golem.getHeroHealth());
+        txt_RangeJak.setText(txt_RangeJak.getText()+ golem.getRange());
+        txt_AtJak.setText(txt_AtJak.getText()+ golem.getAttackSpeed());
+        txt_MsJak.setText(txt_MsJak.getText()+ golem.getMovementSpeed());
+        txt_boolJak.setText(txt_boolJak.getText()+ golem.isRangeAttack());
+        txt_CapJak.setText(txt_CapJak.getText()+ golem.getCapacity());
 
-        txt_DamageRaz.setText(txt_DamageRaz.getText()+razor.getHeroAttackDamage());
-        txt_HealthRaz.setText(txt_HealthRaz.getText()+razor.getHeroHealth());
-        txt_RangeRaz.setText(txt_RangeRaz.getText()+razor.getRange());
-        txt_AtRaz.setText(txt_AtRaz.getText()+razor.getAttackSpeed());
-        txt_MsRaz.setText(txt_MsRaz.getText()+razor.getMovementSpeed());
-        txt_boolRaz.setText(txt_boolRaz.getText()+razor.isRangeAttack());
-        txt_CapRaz.setText(txt_CapRaz.getText()+razor.getCapacity());
+        txt_DamageRaz.setText(txt_DamageRaz.getText()+ orc.getHeroAttackDamage());
+        txt_HealthRaz.setText(txt_HealthRaz.getText()+ orc.getHeroHealth());
+        txt_RangeRaz.setText(txt_RangeRaz.getText()+ orc.getRange());
+        txt_AtRaz.setText(txt_AtRaz.getText()+ orc.getAttackSpeed());
+        txt_MsRaz.setText(txt_MsRaz.getText()+ orc.getMovementSpeed());
+        txt_boolRaz.setText(txt_boolRaz.getText()+ orc.isRangeAttack());
+        txt_CapRaz.setText(txt_CapRaz.getText()+ orc.getCapacity());
 
         txt_Damagewolf.setText(txt_Damagewolf.getText()+wereWolf.getHeroAttackDamage());
         txt_Healthwolf.setText(txt_Healthwolf.getText()+wereWolf.getHeroHealth());

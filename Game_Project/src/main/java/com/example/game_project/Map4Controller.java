@@ -7,11 +7,9 @@ import com.example.Model.Heroes.*;
 import com.example.Model.Maps.Map;
 import com.example.Model.Maps.Map1;
 import com.example.Model.Maps.Map4;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -247,9 +245,9 @@ public class Map4Controller implements Initializable {
         Jak.setFitHeight(100);
         Jak.setFitWidth(100);
 
-        Jakiro jakiro1=new Jakiro();
+        Golem golem1 =new Golem();
 
-        if (TroopsLimit>=jakiro1.getCapacity())
+        if (TroopsLimit>= golem1.getCapacity())
         {
             anch_Map4.getChildren().add(Jak);
             MakeDraggable.makeDraggable(Jak);
@@ -265,14 +263,14 @@ public class Map4Controller implements Initializable {
                         map1=map;
                     }
                 }
-                Jakiro jakiro=new Jakiro(map1,Jak);
+                Golem golem =new Golem(map1,Jak);
 
-                jakiro.getImages().clear();
-                jakiro.getImages().add(Jak);
-                heroes.add(jakiro);
-                Thread t = new Thread(jakiro);
+                golem.getImages().clear();
+                golem.getImages().add(Jak);
+                heroes.add(golem);
+                Thread t = new Thread(golem);
                 t.start();
-                TroopsLimit-=jakiro.getCapacity();
+                TroopsLimit-= golem.getCapacity();
 
             });
         }
@@ -293,9 +291,9 @@ public class Map4Controller implements Initializable {
         Raz.setFitHeight(100);
         Raz.setFitWidth(100);
 
-        Razor razor1=new Razor();
+        Orc orc1 =new Orc();
 
-        if (TroopsLimit>=razor1.getCapacity())
+        if (TroopsLimit>= orc1.getCapacity())
         {
             anch_Map4.getChildren().add(Raz);
             MakeDraggable.makeDraggable(Raz);
@@ -311,14 +309,14 @@ public class Map4Controller implements Initializable {
                         map1=map;
                     }
                 }
-                Razor razor=new Razor(map1,Raz);
+                Orc orc =new Orc(map1,Raz);
 
-                razor.getImages().clear();
-                razor.getImages().add(Raz);
-                heroes.add(razor);
-                Thread t = new Thread(razor);
+                orc.getImages().clear();
+                orc.getImages().add(Raz);
+                heroes.add(orc);
+                Thread t = new Thread(orc);
                 t.start();
-                TroopsLimit-=razor.getCapacity();
+                TroopsLimit-= orc.getCapacity();
 
             });
         }

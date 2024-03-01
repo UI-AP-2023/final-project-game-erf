@@ -2,9 +2,9 @@ package com.example.Controller;
 
 import com.example.Exception.InvalidPassword;
 import com.example.Model.*;
-import com.example.Model.Heroes.Jakiro;
+import com.example.Model.Heroes.Golem;
 import com.example.Model.Heroes.Juggernuat;
-import com.example.Model.Heroes.Razor;
+import com.example.Model.Heroes.Orc;
 import com.example.Model.Heroes.WereWolf;
 import com.example.Model.Maps.*;
 import com.example.game_project.Main;
@@ -249,10 +249,10 @@ public class PlayerController {
         connection.close();
 
         ArrayList<ImageView>heroes=new ArrayList<ImageView>();
-        heroes.add(Jakiro.images.get(0));
+        heroes.add(Golem.images.get(0));
         heroes.add(WereWolf.images.get(0));
         heroes.add(Juggernuat.images.get(0));
-        heroes.add(Razor.images.get(0));
+        heroes.add(Orc.images.get(0));
 
         return heroes;
     }

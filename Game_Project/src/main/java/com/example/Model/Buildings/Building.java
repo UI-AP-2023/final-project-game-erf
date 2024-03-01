@@ -16,6 +16,7 @@ public abstract class Building {
     private double yPosition;
     private boolean destroyed=false;
     private boolean blank=false;
+    private ImageView currentImage;
 
     public Building(BuildingKind buildingKind, double buildingHealth, double attackDamage, double buildingRange, double x, double y , ImageView buildingImage) {
         this.buildingKind = buildingKind;
@@ -55,7 +56,7 @@ public abstract class Building {
         return buildingImage;
     }
 
-    public void setBuildingHealth(double buildingHealth) {
+    public synchronized void setBuildingHealth(double buildingHealth) {
         this.buildingHealth = buildingHealth;
     }
 
@@ -73,5 +74,13 @@ public abstract class Building {
 
     public void setBlank(boolean blank) {
         this.blank = blank;
+    }
+
+    public ImageView getCurrentImage() {
+        return currentImage;
+    }
+
+    public void setCurrentImage(ImageView currentImage) {
+        this.currentImage = currentImage;
     }
 }

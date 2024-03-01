@@ -22,6 +22,9 @@ import java.util.ResourceBundle;
 public class AttackController implements Initializable {
 
     @FXML
+    private AnchorPane anch_Map;
+
+    @FXML
     private Button btn_Attack;
 
     @FXML
@@ -34,16 +37,13 @@ public class AttackController implements Initializable {
     private HBox hbox_Heroes;
 
     @FXML
-    private ImageView img_Jak;
-
-    @FXML
-    private AnchorPane anch_Map;
+    private ImageView img_Gol;
 
     @FXML
     private ImageView img_Map;
 
     @FXML
-    private ImageView img_Raz;
+    private ImageView img_Orc;
 
     @FXML
     private ImageView img_Wolf;

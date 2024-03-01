@@ -6,8 +6,10 @@ import com.example.Model.ClosestHero;
 import com.example.Model.Heroes.Hero;
 import com.example.game_project.Main;
 import com.example.game_project.Map1Controller;
+import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Bounds;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,24 +17,24 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 
-public class ArcherTower extends Building implements Runnable{
+public class ArcherTower extends Building {
 
-    ImageView arrow;
+    private ArrayList<ImageView> arrow=new ArrayList<>();
+
 
     public ArcherTower( double x, double y) {
-        super(BuildingKind.Defensive, 1800, 2000, 200, x, y, new ImageView(new Image(Main.class.getResource("Images/archer_tower_21.png").toString())));
+        super(BuildingKind.Defensive, 18000, 50, 300, x, y, new ImageView(new Image(Main.class.getResource("Images/archer_tower_21.png").toString())));
     }
 
-    public ArcherTower( double x, double y,ImageView arrow) {
-        super(BuildingKind.Defensive, 1800, 2000, 200, x, y, new ImageView(new Image(Main.class.getResource("Images/archer_tower_21.png").toString())));
-        this.arrow=arrow;
+    public ArcherTower( double x, double y,ImageView arrow1) {
+        super(BuildingKind.Defensive, 18000, 50, 300, x, y, new ImageView(new Image(Main.class.getResource("Images/archer_tower_21.png").toString())));
+        this.setCurrentImage(arrow1);
+        initArrow();
     }
 
-    @Override
-    public void run() {
 
-        while(checkAnyHeroRemain())
-        {
+    public void startAll() {
+
             System.out.println("Archer tower thread is running!");
             Hero hero=checkBuildingRange();
             try {
@@ -45,7 +47,7 @@ public class ArcherTower extends Building implements Runnable{
                 alert.setContentText("the attack is interrupted because of InterruptedException!!");
                 alert.show();
             }
-        }
+
 
     }
 
@@ -59,41 +61,47 @@ public class ArcherTower extends Building implements Runnable{
         System.out.println("enter the range method");
 
             ArrayList<ClosestHero> distances=new ArrayList<ClosestHero>();
+        System.out.println(" hero size: "+Map1Controller.heroes.size());
 
-            for (Hero hero:Map1Controller.heroes)
-            {
-                if (!hero.isDead())
+        Hero hero=null;
+
+
+                for (Hero hero1:Map1Controller.heroes)
                 {
+                    if (!hero1.isDead() && !hero1.isBlank())
+                    {
+                        Bounds bounds=hero1.getCurrentImage().localToParent(hero1.getCurrentImage().getBoundsInLocal());
 
-                    Bounds localBounds=hero.getHeroImage().localToParent(hero.getHeroImage().getBoundsInLocal());
+                        xDifference=this.getxPosition()-bounds.getCenterX() ;
+                        yDifference=this.getyPosition()- bounds.getCenterY();
+                        xDifference=Math.pow(xDifference,2);
+                        yDifference=Math.pow(yDifference,2);
 
-                    double x=localBounds.getCenterX();
-                    double y=localBounds.getCenterY();
+                        distance=Math.sqrt(xDifference+yDifference);
+                        distances.add(new ClosestHero(distance, hero1));
+                        System.out.println("size: "+distances.size());
+                    }
 
-                    xDifference=this.getxPosition()- x;
-                    yDifference=this.getyPosition()- y;
-                    xDifference=Math.pow(xDifference,2);
-                    yDifference=Math.pow(yDifference,2);
-
-                    distance=Math.sqrt(xDifference+yDifference);
-                    distances.add(new ClosestHero(distance, hero));
-                    System.out.println("size: "+distances.size());
                 }
 
-            }
-
-
-            distance=Double.MAX_VALUE;
-            Hero hero=null;
-
-            for (int i=0; i<distances.size(); i++)
-            {
-                if (distances.get(i).getDistance()<=distance && distances.get(i).getDistance()<=this.getBuildingRange())
+                if (distances.size()>0)
                 {
-                    distance=distances.get(i).getDistance();
-                    hero=distances.get(i).getHero();
+
+                    distance=distances.get(0).getDistance();
+                    hero=distances.get(0).getHero();
+
+                    for (ClosestHero closestHero : distances) {
+
+                        if (closestHero.getDistance() <= distance ) {
+                            distance = closestHero.getDistance();
+                            System.out.println("distance: " + distance);
+                            hero = closestHero.getHero();
+                            System.out.println("hero: " + hero.toString());
+
+                        }
+                    }
                 }
-            }
+
 
             if (hero!=null)
             {
@@ -110,33 +118,65 @@ public class ArcherTower extends Building implements Runnable{
 
         if (hero!=null) {
 
-            double x=hero.getHerox();
-            double y=hero.getHeroy();
 
-            Bounds localBoundsArrows=arrow.localToParent(arrow.getBoundsInLocal());
-
+            while(hero.getHeroHealth()>0 && this.getBuildingHealth()>0)
+            {
 
                 TranslateTransition attack=new TranslateTransition();
 
-                attack.setByX(x-this.getxPosition());
-                attack.setByY(y-this.getyPosition());
+                Bounds bounds1=hero.getHeroImage().localToParent(hero.getCurrentImage().getBoundsInLocal());
 
-                attack.setNode(arrow);
-                attack.setDuration(Duration.millis(1000));
-                attack.setCycleCount(100);
+                attack.setByX(bounds1.getCenterX()-this.getxPosition());
+                attack.setByY(bounds1.getCenterY()-this.getyPosition());
+
+
+                if (bounds1.getCenterX()-this.getxPosition()<0)
+                {
+                    getCurrentImage().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                }
+
+
+                if (bounds1.getCenterX()-this.getxPosition()>0)
+                {
+                    this.getCurrentImage().setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+                }
+
+                attack.setNode(getCurrentImage());
+                attack.setDuration(Duration.millis(2000));
+                attack.setCycleCount(1);
 
                 attack.play();
+                Thread.sleep(2000);
 
+                attack.setOnFinished(event -> {
 
                     hero.setHeroHealth(hero.getHeroHealth()-this.getAttackDamage());
-                    TranslateTransition reverse=new TranslateTransition();
-                    reverse.setNode(arrow);
-                    reverse.setByX(this.getxPosition()-arrow.getLayoutX());
-                    reverse.setByY(this.getyPosition()-arrow.getLayoutY());
+                    System.out.println("hero health: "+hero.getHeroHealth() );
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Alert alert =new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error while attacking the hero");
+                        alert.setContentText("the attack is interrupted because of InterruptedException!!");
+                        alert.show();
+                    }
 
-                    reverse.setDuration(Duration.millis(100));
-                    reverse.setCycleCount(1);
-                    reverse.play();
+                });
+
+
+                TranslateTransition reverse=new TranslateTransition();
+                reverse.setNode(getCurrentImage());
+
+                reverse.setByX(-attack.getByX());
+                reverse.setByY(-attack.getByY());
+
+                reverse.setDuration(Duration.millis(10));
+                reverse.setCycleCount(1);
+                reverse.play();
+                Thread.sleep(10);
+            }
+
+
 
 
 
@@ -161,6 +201,11 @@ public class ArcherTower extends Building implements Runnable{
     {
         int remainingNumbers=0;
 
+        if (Map1Controller.heroes.size()==0)
+        {
+            return true;
+        }
+
         for (Hero hero : Map1Controller.heroes)
         {
             if (!hero.isDead())
@@ -177,5 +222,12 @@ public class ArcherTower extends Building implements Runnable{
             return false;
     }
 
+    public ArrayList<ImageView> getArrow() {
+        return arrow;
+    }
 
+    public void initArrow()
+    {
+        getArrow().add(new ImageView(new Image(Main.class.getResource("Images/arrow/1.png").toString())));
+    }
 }

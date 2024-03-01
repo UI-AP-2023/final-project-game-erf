@@ -4,7 +4,6 @@ import com.example.Controller.MakeDraggable;
 import com.example.Controller.PlayerController;
 import com.example.Model.Buildings.*;
 import com.example.Model.Heroes.*;
-import com.example.Model.Maps.Map;
 import com.example.Model.Maps.Map2;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -230,23 +229,23 @@ public class Map2Controller implements Initializable {
         Jak.setFitHeight(100);
         Jak.setFitWidth(100);
 
-        Jakiro jakiro1=new Jakiro();
+        Golem golem1 =new Golem();
 
-        if (TroopsLimit>=jakiro1.getCapacity())
+        if (TroopsLimit>= golem1.getCapacity())
         {
             anch_Map2.getChildren().add(Jak);
             MakeDraggable.makeDraggable(Jak);
 
             Jak.setOnMouseReleased(event1 -> {
 
-                Jakiro jakiro=new Jakiro(map,Jak);
+                Golem golem =new Golem(map,Jak);
 
-                jakiro.getImages().clear();
-                jakiro.getImages().add(Jak);
-                heroes.add(jakiro);
-                Thread t = new Thread(jakiro);
+                golem.getImages().clear();
+                golem.getImages().add(Jak);
+                heroes.add(golem);
+                Thread t = new Thread(golem);
                 t.start();
-                TroopsLimit-=jakiro.getCapacity();
+                TroopsLimit-= golem.getCapacity();
 
             });
         }
@@ -267,9 +266,9 @@ public class Map2Controller implements Initializable {
         Raz.setFitHeight(100);
         Raz.setFitWidth(100);
 
-        Razor razor1=new Razor();
+        Orc orc1 =new Orc();
 
-        if (TroopsLimit>=razor1.getCapacity())
+        if (TroopsLimit>= orc1.getCapacity())
         {
             anch_Map2.getChildren().add(Raz);
             MakeDraggable.makeDraggable(Raz);
@@ -277,14 +276,14 @@ public class Map2Controller implements Initializable {
             Raz.setOnMouseReleased(event1 -> {
 
 
-                Razor razor=new Razor(map,Raz);
+                Orc orc =new Orc(map,Raz);
 
-                razor.getImages().clear();
-                razor.getImages().add(Raz);
-                heroes.add(razor);
-                Thread t = new Thread(razor);
+                orc.getImages().clear();
+                orc.getImages().add(Raz);
+                heroes.add(orc);
+                Thread t = new Thread(orc);
                 t.start();
-                TroopsLimit-=razor.getCapacity();
+                TroopsLimit-= orc.getCapacity();
 
             });
         }
