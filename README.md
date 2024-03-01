@@ -1,15 +1,3 @@
-# پروژه نهایی درس برنامه نویسی پیشرفته 
-
-استاد درس:  دکتر رمضانی 
-
- نیمسال دوم تحصیلی ۰۱ -۰۲
-
-طراحان پروژه: تیم تی‌ای برنامه‌نویسی پیشرفته
-
-امیرعلی گلی-محمد توکلی- ملیکا شیریان- رضا چراخ- زهرا معصومی - متین اعظمی-عسل خائف - محمدکاظم هرندی - شیدا عابدپور - میلاد توکلی - امیرعلی لطفی -  امیر فیض - شاهین سبزی
-
-
-شما می‌توانید فایل مستند پروژه را دریافت کرده و مطالعه کنید!
-
-از ریپوزیتوری ساخته شده clone بگیرید تا در سیستم خود داشته باشید . سپس یک برنچ جدید ساخته  و تغییرات خود را در آن برنچ کامیت کنید. کامیت های درست در بازه های زمانی کوتاه، بخشی از معیار نمره دهی میباشد
-
+# Clash of Clans Simulation Game
+This project is a small simulation game of Clash of Clans implemented using Java and Java FX.
+In this project, Thread is used to implement the movement and attack of the heroes, as well as to implement the defense of the buildings against the heroes.
