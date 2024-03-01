@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anch_Profile" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="763.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game_project.ProfileController">
+   <children>
+      <ImageView fitHeight="768.0" fitWidth="1365.0">
+         <image>
+            <Image url="@Images/1006023839.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="txt_UserName" fontSmoothingType="LCD" layoutX="159.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName:" wrappingWidth="1031.7365798950195">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="txt_Password" fontSmoothingType="LCD" layoutX="356.0" layoutY="505.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="746.1365585327148">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="txt_Level" fontSmoothingType="LCD" layoutX="547.0" layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level:" wrappingWidth="385.3366928100586">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="txt_Wins" fill="#dd380a" fontSmoothingType="LCD" layoutX="688.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wins:" wrappingWidth="322.9366683959961">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="36.0" />
+         </font>
+      </Text>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" prefHeight="56.0" prefWidth="131.0" style="-fx-background-color: #D9AD4E;" text="Back">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
+         </font>
+      </Button>
+      <Text fx:id="txt_Losses" fill="#c23603" fontSmoothingType="LCD" layoutX="811.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Losses:" wrappingWidth="291.7367172241211">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="36.0" />
+         </font>
+      </Text>
+      <Text fx:id="txt_Map" fontSmoothingType="LCD" layoutX="981.0" layoutY="688.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Map:" wrappingWidth="291.7367172241211">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="36.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

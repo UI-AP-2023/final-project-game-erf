@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="540e3a38-350a-4146-a429-31719a490fd5" name="Changes" comment="update my project till here">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Controller/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Controller/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/ArcherTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/ArcherTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/Tesla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/Tesla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/WizardTower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/WizardTower.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Jakiro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Golem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Juggernuat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Juggernuat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Razor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Orc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/WereWolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/WereWolf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Model/Maps/Map1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Model/Maps/Map1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game_project/AttackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game_project/AttackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game_project/HeroesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game_project/HeroesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game_project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game_project/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game_project/Map1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game_project/Map1Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game_project/Map2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game_project/Map2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/game_project/Map4Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/game_project/Map4Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Attack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Attack.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Images/Video_2023-06-27_133244_gif_001.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Images/studio-pinata-clash-builderbase2-closeup-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Images/studio-pinata-clash-builderbase2-full.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Map1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Map1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Map2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Map2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Map3.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Map3.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Map4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/game_project/Map4.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2S4eLteX5vMKLTK4Md1uZPxFGOj" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Erf",
+    "last_opened_file_path": "C:/Users/acer/IdeaProjects/final-project-game-erf/Game_Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.54252875",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Gif" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.Controller.Gif" />
+      <module name="Game_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Gif" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="540e3a38-350a-4146-a429-31719a490fd5" name="Changes" comment="" />
+      <created>1688410234232</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1688410234232</updated>
+      <workItem from="1688410237631" duration="6060000" />
+      <workItem from="1688418902717" duration="28242000" />
+      <workItem from="1688465165618" duration="1446000" />
+      <workItem from="1688584762703" duration="1293000" />
+      <workItem from="1688631325532" duration="14674000" />
+      <workItem from="1688724833263" duration="5355000" />
+      <workItem from="1688831231890" duration="3967000" />
+      <workItem from="1688836341900" duration="6684000" />
+      <workItem from="1688890714255" duration="913000" />
+      <workItem from="1688893953969" duration="9472000" />
+      <workItem from="1688931860455" duration="7184000" />
+      <workItem from="1689186810480" duration="620000" />
+      <workItem from="1689364214846" duration="1774000" />
+      <workItem from="1689368300370" duration="1004000" />
+      <workItem from="1695806627717" duration="51000" />
+      <workItem from="1700639523565" duration="189000" />
+    </task>
+    <task id="LOCAL-00001" summary="update my project till here">
+      <created>1688461581837</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1688461581837</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update my project till here" />
+    <option name="LAST_COMMIT_MESSAGE" value="update my project till here" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Juggernuat.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Juggernuat.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Juggernuat.java</url>
+          <line>179</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Heroes/Juggernuat.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/ArcherTower.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/ArcherTower.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/game_project/Map1Controller.java</url>
+          <line>258</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/game_project/Map1Controller.java</url>
+          <line>237</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/ArcherTower.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/ArcherTower.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/game_project/Map1Controller.java</url>
+          <line>508</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/game_project/Map1Controller.java</url>
+          <line>298</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/Model/Buildings/ArcherTower.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ach_SignUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="763.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game_project.SignUpController">
+   <children>
+      <ImageView fitHeight="797.0" fitWidth="1373.0">
+         <image>
+            <Image url="@Images/thumb-1920-773523.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txt_UserName" alignment="CENTER" layoutX="528.0" layoutY="235.0" prefHeight="70.0" prefWidth="307.0" promptText="UserName:" style="-fx-background-color: #02053A; -fx-text-fill: #66FFFF;">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txt_Password" alignment="CENTER" layoutX="532.0" layoutY="346.0" prefHeight="70.0" prefWidth="307.0" promptText="Password:" style="-fx-background-color: #3D1365; -fx-text-fill: #FABCFB;">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btn_Back" layoutX="40.0" layoutY="672.0" mnemonicParsing="false" onAction="#back" prefHeight="47.0" prefWidth="82.0" style="-fx-background-color: #AB58AA;" text="Back" textFill="#29063b">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_Submit" layoutX="603.0" layoutY="468.0" mnemonicParsing="false" onAction="#SignUp" prefHeight="47.0" prefWidth="158.0" style="-fx-background-color: #3E2FAE;" text="Submit" textFill="#05083b">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
