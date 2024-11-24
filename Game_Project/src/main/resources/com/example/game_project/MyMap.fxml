@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="763.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.game_project.MyMapController">
+   <children>
+      <ImageView fx:id="img_Background" fitHeight="766.0" fitWidth="1366.0">
+         <image>
+            <Image url="@Images/5d656654431ff93b9cf2c7b2a86e089b.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_Map" fitHeight="596.0" fitWidth="781.0" layoutX="333.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btn_Back" layoutX="14.0" layoutY="714.0" mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #316648;" text="Back" textFill="#429649">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="24.0" />
+         </font>
+      </Button>
+      <Text fx:id="txt_TroopsLimit" fill="#2e5979" fontSmoothingType="LCD" layoutX="608.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Troos Limit" textAlignment="CENTER" wrappingWidth="230.13336181640608">
+         <font>
+            <Font name="Gill Sans Ultra Bold Condensed" size="26.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
